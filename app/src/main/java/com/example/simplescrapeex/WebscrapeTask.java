@@ -45,9 +45,11 @@ public class WebscrapeTask extends AsyncTask<Void, Void, Void> {
 
              */
 
-            for (Element stories: document.selectFirst(".content.article-list").children()) {
-                String title = stories.selectFirst(".title").text();
-                myTitles.add(title);
+            for (Element stories: document.selectFirst(".collection.collection-article-list").children()) {
+                for (Element articles: stories.selectFirst(".content.article-list").children()) {
+                    String title = articles.selectFirst(".title").text();
+                    myTitles.add(title);
+                }
             }
             Log.i("Denna", "myTitles size is: "+ myTitles.size());
         }
